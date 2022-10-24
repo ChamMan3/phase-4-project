@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :lists
+  resources :events
+  resources :users
 
   get '/hello', to: 'application#hello_world'
 
