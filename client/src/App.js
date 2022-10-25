@@ -1,19 +1,25 @@
-import { useState, useEffect } from "react";
-import Login from "./components/Login";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0);
+import React from "react"
+import NavBar from "./NavBar"
+import Events from "./Events"
+import Welcome from "./Welcome"
+import Settings from "./Settings"
+import { Calendar } from "react-calendar";
+import {  Route, Routes } from "react-router-dom";
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+
+export default function App() {
 
   return (
-  <Login />
+    <div>
+      <p>Yo</p>
+      <NavBar/>
+      <Routes>
+        <Route path="/calendar" element={<Calendar/>}/>
+        <Route path="/events" element={<Events/>}/>
+        <Route path="/" element={<Welcome/>}/>
+        <Route path="/settings" element={<Settings/>}/>
+      </Routes>
+    </div>
   );
 }
-
-export default App;
