@@ -1,5 +1,5 @@
 // import Lists from "./Lists"
 
-export default function Event(){
+export default function Events(){
 
 }

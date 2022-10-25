@@ -3,7 +3,7 @@ import NavBar from "./NavBar"
 import Events from "./Events"
 import Welcome from "./Welcome"
 import Settings from "./Settings"
-import { Calendar } from "react-calendar";
+import Calendar from "./Calendar"
 import {  Route, Routes } from "react-router-dom";
 
 
