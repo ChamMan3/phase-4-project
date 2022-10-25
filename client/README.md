@@ -1,3 +1,28 @@
+Boom we out here with a nice calendar and shit
+User Stories
+
+As a User I can… 
+
+- Sign up 
+- Sign in if they already have an account.
+- On sign in/up Users can keep track of their events in our calendar app
+- Users can create new events, update the details/date of the event, delete an event, or simply view their events.
+- Users can also make lists related to the specific events, these lists could be the gifts you plan on giving if the event is christmas for example, or if the event is a vacation the lists can be filled with locations, restaurants, or the guest list for the event.
+
+Whimsical board: https://whimsical.com/calendar-caliphate-X8TmKirEMsVhCTa9ZbeaD3
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
