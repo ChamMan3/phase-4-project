@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   # authentication 
-  post "/login", to: "seesions#create"
+  post "/login", to: "sessions#create"
 
   get "/authorized_user", to: "users#show"
 
