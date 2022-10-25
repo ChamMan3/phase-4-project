@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     def show
         user = find_params
-        render json: user
+        render json: user, status: :ok
     end
 
     def create

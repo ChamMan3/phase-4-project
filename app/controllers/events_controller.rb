@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     
     def show
         event = find_params 
-        render json: event
+        render json: event, serializer: ListsInEventsSerializer
     end
 
     def create
