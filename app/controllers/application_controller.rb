@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
 
 
 
-    before_action :authorized_user
+    # before_action :authorized_user
 
 
     # checking to see if current user exists 

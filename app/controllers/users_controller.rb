@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     
     # potential future problem here
 
-    skip_before_action :authorized_user
+    # skip_before_action :authorized_user
 
 
     def show
