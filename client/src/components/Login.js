@@ -1,9 +1,12 @@
 import React from "react"
 import { useEffect, useState } from "react"
+import {useNavigate} from 'react-router-dom'
 
 
-export default function Login({setCurrentUser}){
 
+export default function Login( {setCurrentUser} ){
+
+   const navigate = useNavigate()
   
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -24,9 +27,17 @@ export default function Login({setCurrentUser}){
             email,
             password,
           })
+        }).then((r) => {
+        setIsLoading(false);
+        if (r.ok){
+            r.json().then(data => {
+                navigate('/calendar')
+            })
+            }else {
+                r.json().then(json => setErrors(json.errors))
+            }
         })
-        .then((r) => console.log(r)
-    )}
+    }
        
 
 //     e.preventDefault();
