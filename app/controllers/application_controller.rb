@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
     # renders custom error if user does not exist
     def authorized_user
         render json: {error: "Not Authorized"}, status: 
-        :unathorized unless current_user
+        :unauthorized unless current_user
     end
 
 

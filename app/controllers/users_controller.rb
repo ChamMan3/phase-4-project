@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 
     
     # potential future problem here
-    skip_before_action :authorized_user, only: [:create]
+
+    skip_before_action :authorized_user
 
 
     def show
-        # user = find_params
         render json: current_user, status: :ok
     end
 
