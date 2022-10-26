@@ -4,8 +4,8 @@ import NavBar from "./NavBar"
 import Events from "./Events"
 import Welcome from "./Welcome"
 import Settings from "./Settings"
-import { Calendar } from "react-calendar";
-import {  Route, Routes } from "react-router-dom";
+import Calendar from "./Calendar"
+import { Route, Routes } from "react-router-dom";
 
 
 export default function App() {
