@@ -4,7 +4,9 @@ class UsersController < ApplicationController
     # potential future problem here
 
     # skip_before_action :authorized_user
-
+    def index
+        render json: User.all 
+    end
 
     def show
         render json: current_user, status: :ok

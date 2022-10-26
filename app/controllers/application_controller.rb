@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
 
 
 
-    # before_action :authorized_user
+    before_action :authorized_user
 
 
     # checking to see if current user exists 
@@ -15,15 +15,13 @@ class ApplicationController < ActionController::API
         user
     end
 
+    private 
 
     # renders custom error if user does not exist
     def authorized_user
         render json: {error: "Not Authorized"}, status: 
         :unauthorized unless current_user
     end
-
-
-    private 
 
     def render_not_found_response invalid
         render json: { error: "#{invalid.model} not found"}, status: :not_found

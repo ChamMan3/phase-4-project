@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-    has_many :lists 
+    has_many :lists, dependent: :destroy 
     has_many :users, through: :lists
     
     validates :day, inclusion: 1..31
