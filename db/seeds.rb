@@ -1,6 +1,4 @@
-User.all.destroy
-Event.all.destroy
-List.all.destroy
+
 
 
 

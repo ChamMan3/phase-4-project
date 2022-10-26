@@ -1,4 +1,5 @@
-import React from "react"
+
+import React, { useState } from "react"
 import NavBar from "./NavBar"
 import Events from "./Events"
 import Welcome from "./Welcome"
@@ -8,6 +9,10 @@ import { Route, Routes } from "react-router-dom";
 
 
 export default function App() {
+const [currentUser, setCurrentUser] = useState(false)
+
+
+
 
   return (
     <div>
@@ -16,7 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/calendar" element={<Calendar/>}/>
         <Route path="/events" element={<Events/>}/>
-        <Route path="/" element={<Welcome/>}/>
+        <Route path="/" element={<Welcome user ={currentUser} />} />
         <Route path="/settings" element={<Settings/>}/>
       </Routes>
     </div>
