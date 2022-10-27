@@ -4,7 +4,7 @@ import Signup from "./Signup"
 export default function Welcome({user}){
     return(
     <>
-    {!user ? <Login /> : <Signup />}
+    {/* {user ? <Login /> : <Signup />} */}
     </>
     )
 
