@@ -28,6 +28,7 @@ const [isLoading, setIsLoading] = useState(false);
 
 
 
+
 // checks session id at page load to determine if it should take to login or signup
 useEffect(() => {
   fetch("/authorized_user")

@@ -31,12 +31,12 @@ export default function Login( {updateUser} ){
         setIsLoading(true);
         if (r.ok){
             r.json().then(data => {
-                // console.log(currentUser)
+                console.log(data)
                 updateUser(data)
                 navigate(`/calendar`)
             })
             }else {
-                r.json().then(json => setErrors(json.errors))
+                r.json().then(json => console.log(json.errors))
             }
         })
     }
