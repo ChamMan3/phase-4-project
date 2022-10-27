@@ -58,8 +58,8 @@ export default function Login( {updateUser} ){
 
 
     return(
-        <div className="grid grid-cols-1 sm:grid-cols-2">
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 flex flex-col justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 content-center">
+            <div className="bg-gradient-to-r from-purple-500 to-pink-500 flex flex-col content-center">
                 <form onSubmit={(e) => handleSubmit(e)} className="max-w-[400px] w-full mx-auto bg-gray-600 p-8 px-8 rounded-lg">
                     <h2 className="text-4xl text-white font-bold text-center">LOG IN</h2>
                     <div>
