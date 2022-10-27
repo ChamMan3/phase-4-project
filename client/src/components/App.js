@@ -1,12 +1,19 @@
 
 import React, { useState, useEffect } from "react"
 import NavBar from "./NavBar"
+import Events from "./EventForm"
+import Welcome from "./Welcome"
 import Events from "./Events"
 import Singup from "./Signup"
 import Login from "./Login"
 import Settings from "./Settings"
 import Calendar from "./Calendar"
 import { Route, Routes } from "react-router-dom";
+
+
+// Need to fetch both lists and events here then combine the lists details with the rest of the associated event
+// After this need to pass the combined thing into the calendar so it can be displayed on Calendar and send the set state down the event line
+// so that everything can be updated from there and in turn update the displayed events
 
 
 export default function App() {
@@ -63,7 +70,6 @@ const fetchEvents = () => {
 
   return (
     <div>
-      <p>Yo</p>
       <NavBar/>
       {/* { !currentUser? <Login error={'please login'} updateUser={updateUser} /> : */}
     <>
