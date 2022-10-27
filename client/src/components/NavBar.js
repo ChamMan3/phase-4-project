@@ -5,9 +5,9 @@ export default function NavBar(){
 
     return (
     <>
-        <NavLink to="/">
+        {/* <NavLink to="/login" className='"text-blue-500 hover:text-blue-800"'>
             Login
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/Calendar">
             Calendar
         </NavLink>

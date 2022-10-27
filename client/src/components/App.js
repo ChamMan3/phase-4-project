@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import NavBar from "./NavBar"
 // import Events from "./EventForm"
 import Events from "./Events"
-import Singup from "./Signup"
+import Signup from "./Signup"
 import Login from "./Login"
 import Settings from "./Settings"
 import Calendar from "./Calendar"
@@ -28,59 +28,63 @@ const [isLoading, setIsLoading] = useState(false);
 
 
 
+
 // checks session id at page load to determine if it should take to login or signup
 useEffect(() => {
   fetch("/authorized_user")
   .then((r) => {
+    // console.log(r)       console log
     if (r.ok) {
       r.json()
-      .then((data) => 
-      setCurrentUser(data));
+      .then((user) => 
+      setCurrentUser(user));
     }
   });
 }, []);
 
-
-// useEffect(() => {
-//   fetch("/authorized_user")
-//   .then((res) => {
-//     if (res.ok) {
-//       res.json()
-//       .then((user) => {
-//         updateUser(user);
+console.log(currentUser)
 
 
-const fetchEvents = () => {
-  fetch('/events')
-  .then(res => {
-    if(res.ok){
-      res.json().then(setEvents)
-    }else {
-      res.json().then(data => setErrors(data.error))
-    }
-  })
-}
+// if (!currentUser) return <Signup updateUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>;
 
-  // const updateUser = (currentUser) => setCurrentUser(currentUser)
 
+
+// if (!user) return <Login onLogin={setUser} />;
 
 
 
 
   return (
+
+    
     <div>
       <NavBar/>
-      {/* { !currentUser? <Login error={'please login'} updateUser={updateUser} /> : */}
     <>
       <Routes>
         <Route path="/calendar" element={<Calendar/>}/>
         <Route path="/events" element={<Events/>}/>
-        <Route path="/" element={<Login updateUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
-        <Route path="/settings" element={<Settings/>}/>
-        <Route path="/signup" element={<Singup setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
+        <Route path="/login" element={<Login updateUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
+        <Route path="/settings" element={<Settings updateUser={setCurrentUser} />}/>
+        <Route path="/" element={<Signup updateUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
       </Routes>
     </>
-      {/* } */}
     </div>
   );
 }
+
+
+
+
+
+// const fetchEvents = () => {
+//   fetch('/events')
+//   .then(res => {
+//     if(res.ok){
+//       res.json().then(setEvents)
+//     }else {
+//       res.json().then(data => setErrors(data.error))
+//     }
+//   })
+// }
+
+  // const updateUser = (currentUser) => setCurrentUser(currentUser)

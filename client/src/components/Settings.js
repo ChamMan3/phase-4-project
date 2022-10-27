@@ -1,4 +1,34 @@
-export default function Settings(){
+import React from "react"
+import { useEffect, useState } from "react"
+import {useNavigate} from 'react-router-dom'
+
+
+
+
+
+
+
+export default function Settings({updateUser}){
+
+    const navigate = useNavigate()
+
+
+
+    const handleLogOut = () => {
+        fetch(`/logout`, {
+          method:"DELETE"
+        })
+        .then(res =>{
+          if(res.ok){
+            console.log(res)
+            updateUser(false)
+            navigate('/')
+
+          }
+        })
+      }
+
+
 
     return(
         <>
@@ -6,7 +36,7 @@ export default function Settings(){
             <br></br>
             <p>Change your password</p>
             <br></br>
-            <p>Delete your Account</p>
+            <button onClick={handleLogOut}>LOGOUT</button>
         </>
     )
 }
