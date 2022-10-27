@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from "react"
 import NavBar from "./NavBar"
-import Events from "./EventForm"
-import Welcome from "./Welcome"
+// import Events from "./EventForm"
 import Events from "./Events"
 import Singup from "./Signup"
 import Login from "./Login"
