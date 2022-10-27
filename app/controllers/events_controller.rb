@@ -33,7 +33,8 @@ class EventsController < ApplicationController
     end
 
     def event_params
-        params.permit(:event_type, :name, :time, :month, :day)
+                                        #these were month/day
+        params.permit(:event_type, :name, :time, :start, :end)
     end
 
 end

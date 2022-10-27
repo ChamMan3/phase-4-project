@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :lists, only: [:index, :show, :update, :create, :destroy]
   resources :events, only: [:index, :show, :update, :create, :destroy]
-  resources :users, only: [:show, :update, :create, :destroy]
+  resources :users, only: [:index, :show, :update, :create, :destroy]
 
 
   # authentication 
@@ -11,8 +11,5 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#delete"
 
-
-  #full CRUD lists
-  #full CRUD users no index
 
 end

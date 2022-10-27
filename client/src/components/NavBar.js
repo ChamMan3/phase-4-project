@@ -5,7 +5,7 @@ export default function NavBar(){
 
     return (
     <>
-        <NavLink exact to="/">
+        <NavLink to="/">
             Login
         </NavLink>
         <NavLink to="/Calendar">
