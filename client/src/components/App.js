@@ -24,13 +24,24 @@ const [isLoading, setIsLoading] = useState(false);
 
 // checks session id at page load to determine if it should take to login or signup
 useEffect(() => {
-  fetch("/authorized_user").then((r) => {
+  fetch("/authorized_user")
+  .then((r) => {
     if (r.ok) {
-      r.json().then((user) => setCurrentUser(user));
+      r.json()
+      .then((data) => 
+      setCurrentUser(data));
     }
   });
 }, []);
 
+
+// useEffect(() => {
+//   fetch("/authorized_user")
+//   .then((res) => {
+//     if (res.ok) {
+//       res.json()
+//       .then((user) => {
+//         updateUser(user);
 
 
 const fetchEvents = () => {
@@ -44,7 +55,7 @@ const fetchEvents = () => {
   })
 }
 
-// const updateUser = (user) => setCurrentUser(user)
+  // const updateUser = (currentUser) => setCurrentUser(currentUser)
 
 
 
@@ -59,9 +70,9 @@ const fetchEvents = () => {
       <Routes>
         <Route path="/calendar" element={<Calendar/>}/>
         <Route path="/events" element={<Events/>}/>
-        <Route path="/" setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail} element={<Login/>} />
+        <Route path="/" element={<Login updateUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
         <Route path="/settings" element={<Settings/>}/>
-        <Route path="/signup" setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail} element={<Singup/>}/>
+        <Route path="/signup" element={<Singup setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
       </Routes>
     </>
       {/* } */}

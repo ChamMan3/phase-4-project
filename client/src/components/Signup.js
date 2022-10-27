@@ -1,5 +1,6 @@
 import React from "react"
 import {useState, useEffect} from "react"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +12,8 @@ export default function Signup( {setCurrentUser, name, setEmail, setName, setPas
     
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate()
 
 
 
@@ -41,6 +44,8 @@ export default function Signup( {setCurrentUser, name, setEmail, setName, setPas
         if (r.ok) {
             r.json().then((user) => {
                 console.log(user)
+                navigate('/calendar')
+
             }
             )
             

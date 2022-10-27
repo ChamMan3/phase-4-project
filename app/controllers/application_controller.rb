@@ -9,18 +9,18 @@ class ApplicationController < ActionController::API
     before_action :authorized_user
 
 
-    # checking to see if current user exists 
-    def current_user
-        user = User.find_by(id: session[:user_id])
-        user
-    end
+    # # how did this not talk to the authorized_user?
+    # def current_user
+    #     user = User.find_by(id: session[:user_id])
+    #     user
+    # end
 
     private 
 
     # renders custom error if user does not exist
     def authorized_user
-        render json: {error: "Not Authorized"}, status: 
-        :unauthorized unless current_user
+        @current_user = User.find_by(id: session[:user_id])
+        render json: {error: "Not Authorized"}, status: :unauthorized unless @current_user
     end
 
     def render_not_found_response invalid

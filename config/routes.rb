@@ -11,8 +11,4 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#delete"
 
-
-  #full CRUD lists
-  #full CRUD users no index
-
 end
