@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import NavBar from "./NavBar"
 // import Events from "./EventForm"
 import Events from "./Events"
-import Singup from "./Signup"
+import Signup from "./Signup"
 import Login from "./Login"
 import Settings from "./Settings"
 import Calendar from "./Calendar"
@@ -29,6 +29,7 @@ const [email, setEmail] = useState('')
 useEffect(() => {
   fetch("/authorized_user")
   .then((r) => {
+    // console.log(r)       console log
     if (r.ok) {
       r.json()
       .then((data) => {
@@ -41,6 +42,8 @@ useEffect(() => {
 
 
   return (
+
+    
     <div>
       <NavBar setEvents={setEvents} currentUser={currentUser}/>
       {/* { !currentUser? <Login error={'please login'} updateUser={updateUser} /> : */}
@@ -49,11 +52,27 @@ useEffect(() => {
         <Route path="/calendar" element={<Calendar events={events}/>}/>
         <Route path="/events" element={<Events setLists={setLists} setEvents={setEvents} lists={lists} events={events} currentUser={currentUser}/> }/>
         <Route path="/" element={<Login setLists={setLists} updateUser={setCurrentUser} setEvents={setEvents} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
-        <Route path="/settings" element={<Settings/>}/>
-        <Route path="/signup" element={<Singup setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
+        <Route path="/settings" element={<Settings setCurrentUser={setCurrentUser} />}/>
+        <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
       </Routes>
     </>
-      {/* } */}
     </div>
   );
 }
+
+
+
+
+
+// const fetchEvents = () => {
+//   fetch('/events')
+//   .then(res => {
+//     if(res.ok){
+//       res.json().then(setEvents)
+//     }else {
+//       res.json().then(data => setErrors(data.error))
+//     }
+//   })
+// }
+
+  // const updateUser = (currentUser) => setCurrentUser(currentUser)
