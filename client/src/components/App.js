@@ -51,9 +51,9 @@ useEffect(() => {
       <Routes>
         <Route path="/calendar" element={<Calendar events={events}/>}/>
         <Route path="/events" element={<Events setLists={setLists} setEvents={setEvents} lists={lists} events={events} currentUser={currentUser}/> }/>
-        <Route path="/" element={<Login setLists={setLists} updateUser={setCurrentUser} setEvents={setEvents} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
+        <Route path="/login" element={<Login setLists={setLists} updateUser={setCurrentUser} setEvents={setEvents} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
         <Route path="/settings" element={<Settings setCurrentUser={setCurrentUser} />}/>
-        <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
+        <Route path="/" element={<Signup setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
       </Routes>
     </>
     </div>

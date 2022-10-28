@@ -4,25 +4,7 @@ import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from "@fullcalendar/interaction"
 // import monthGridPlugin from "@fullcalendar/monthgrid"
 
-// const events = [
-//     {
-//       id: 1,
-//       title: 'event 1',
-//       start: '2022-10-14',
-//       end: '2022-10-14',
-//     },
-//     {
-//       id: 2,
-//       title: 'event 2',
-//       start: '2022-10-16',
-//       end: '2022-10-16',
-//     },
-//     { 
-//       id: 3, 
-//       title: 'event 3', 
-//       start: '2022-10-17', 
-//       end: '2022-10-20' },
-//   ];
+
 
 export default function Calendar({events}){
     const handleDateSelect = (selectInfo) => {
@@ -66,6 +48,7 @@ export default function Calendar({events}){
                 month: "Month",
                 week: "Week"
             }}
+            
             editable={true}
             selectable={true}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

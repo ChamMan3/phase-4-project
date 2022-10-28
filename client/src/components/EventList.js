@@ -2,7 +2,7 @@ import React from "react";
 import EventCard from "./EventCard";
 
 function EventList({  lists, currentUser, events, onDeleteEvent, onUpdateEvent, handleAddList }) {
-  console.log(lists)
+  // console.log(lists)
   return (
     <ul className="cards">
       {events.map((event) => {
@@ -17,16 +17,7 @@ function EventList({  lists, currentUser, events, onDeleteEvent, onUpdateEvent, 
             handleAddList={handleAddList} 
             lists={lists}
             />)})}
-      {/* {lists.map((list) => {
-              return (
-              <EventCard 
-              // key={list.id} 
-              list={list}
-              />
-              )
-            }
-            )
-            } */}
+ 
     </ul> 
 );
   

@@ -43,7 +43,7 @@ function EventCard({  lists , currentUser, event, onDeleteEvent, onUpdateEvent, 
 
   return (
     <li className="card">
-
+        
       <h4>{eventType}</h4>
       <p>{name}</p>
       <p>{start}  {end ? "- " + end : null}</p>
@@ -64,7 +64,15 @@ function EventCard({  lists , currentUser, event, onDeleteEvent, onUpdateEvent, 
         <button type="submit">Update Start and End</button>
 
       </form>
-      <button onClick={showDetails}> Show Details </button>
+            {lists.map((list) => {
+             if(list.event_id===id) {
+              return (
+              
+     
+        <p key={list.id}>{list.details}</p>
+
+      )}
+      })}
       
     </li>
   );
