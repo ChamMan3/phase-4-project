@@ -1,14 +1,9 @@
-puts "destroying seeds"
-User.all.destroy
-Event.all.destroy
-List.all.destroy
 
-puts "reseeding"
 
-u1=User.create!(name: "Jake", password: "1234", email: "myemail@gmail.com")
-u2=User.create!(name: "Chris Tucker", password: "1234", email: "LAPD@gmail.com")
-u3=User.create!(name: "Roadhog", password: "1234", email: "Roadhog@gmail.com")
-u4=User.create!(name: "Luke", password: "1234", email: "lukeemail@gmail.com")
+u1=User.create!(name: "Jake", password: "1234", password_confirmation: "1234", email: "myemail@gmail.com")
+u2=User.create!(name: "Chris Tucker", password: "1234", password_confirmation: "1234", email: "LAPD@gmail.com")
+u3=User.create!(name: "Roadhog", password: "1234", password_confirmation: "1234", email: "Roadhog@gmail.com")
+u4=User.create!(name: "Luke", password: "1234", password_confirmation: "1234", email: "lukeemail@gmail.com")
 
 e1=Event.create!(event_type: "birthday", name:"Roadhog's birthday", time: 1130, start: 11, end: 10)
 e2=Event.create!(event_type: "wedding", name:"Roadhog's wedding", time: 1135, start: 12, end: 10)

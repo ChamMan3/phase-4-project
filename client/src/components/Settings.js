@@ -8,7 +8,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function Settings({updateUser}){
+export default function Settings({setCurrentUser}){
 
     const navigate = useNavigate()
 
@@ -21,7 +21,7 @@ export default function Settings({updateUser}){
         .then(res =>{
           if(res.ok){
             console.log(res)
-            updateUser(false)
+            setCurrentUser(false)
             navigate('/')
 
           }

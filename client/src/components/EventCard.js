@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 
-function EventCard({ event, onDeleteEvent, onUpdateEvent }) {
-  const { id, eventType, name, day, month } = event;
-
-  // const [updatedDetails, setUpdatedDetails] = useState(details)
- 
+function EventCard({  lists , currentUser, event, onDeleteEvent, onUpdateEvent, handleAddList }) {
+  const { id, eventType, name, start, end } = event;
   
 
+  const [updatedStart, setUpdatedStart] = useState("")
+  const [updatedEnd, setUpdatedEnd] = useState("")
+ 
+ function showDetails(e) {
+  if(lists.event_id===id){
+  return lists.details
+ }
+ }
 
   function handleDeleteClick() {
-    fetch(`${id}`, {
+    fetch(`/events/${id}`, {
       method: "DELETE",
     });
 
@@ -18,34 +23,49 @@ function EventCard({ event, onDeleteEvent, onUpdateEvent }) {
 
   function handleUpdateSubmit(e) {
     e.preventDefault();
-    fetch(`${id}`, {
+    fetch(`/events/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify({ details: updatedDetails }),
+      body: JSON.stringify({ 
+        start : updatedStart,
+        end : updatedEnd
+       }),
     })
       .then((r) => r.json())
       .then((updatedEvent) => {
         onUpdateEvent(updatedEvent);
+        
       });
   }
+  
 
   return (
     <li className="card">
+
       <h4>{eventType}</h4>
       <p>{name}</p>
-      <p>{month} : {day}</p>
+      <p>{start}  {end ? "- " + end : null}</p>
       <button onClick={handleDeleteClick}>Delete</button>
       <form onSubmit={handleUpdateSubmit}>
         <input
           type="text"
           placeholder="let em know whats up"
-          // value={updatedDetails}
-          // onChange={(e) => setUpdatedDetails(e.target.value)}
+          value={updatedStart}
+          onChange={(e) => setUpdatedStart(e.target.value)}
         />
-        <button type="submit">Update Details</button>
+        <input
+          type="text"
+          placeholder="let em know whats down"
+          value={updatedEnd}
+          onChange={(e) => setUpdatedEnd(e.target.value)}
+        />
+        <button type="submit">Update Start and End</button>
+
       </form>
+      <button onClick={showDetails}> Show Details </button>
+      
     </li>
   );
 }

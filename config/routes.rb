@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#delete"
 
-
+  get "/me", to: "users#show"
 end
