@@ -44,6 +44,7 @@ export default function Signup( {setCurrentUser, name, setEmail, setName, setPas
                 setPassword('');
                 setPasswordConfirmation('');
                 navigate('/calendar')
+                setCurrentUser(user)
             }
             )
             
