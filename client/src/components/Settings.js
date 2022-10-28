@@ -37,7 +37,7 @@ export default function Settings({updateUser}){
             <br></br>
             <p>Change your password</p>
             <br></br>
-            <button onClick={handleLogOut} class="bg-cyan-600 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">LOGOUT</button>
+            <button onClick={handleLogOut} class="bg-cyan-600 hover:bg-blue-700 text-white font-bold py-2 px-2  rounded">LOGOUT</button>
         </div>
     )
 }
