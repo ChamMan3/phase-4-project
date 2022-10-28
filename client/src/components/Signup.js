@@ -67,9 +67,10 @@ function handleClick(){
 
 
     return(
-        <div className="grid grid-cols-1 sm:grid-cols-2">
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 flex flex-col justify-center">
-                <form onSubmit={handleSubmit} className="max-w-[400px] w-full mx-auto bg-gray-300 p-8 px-8 rounded-lg">
+    <body className="bg-gradient-to-r from-purple-500 to-cyan-500">
+        <div className="bg-gradient-to-r from-purple-500 to-cyan-500">
+            <div className="bg-gradient-to-r from-purple-500 to-cyan-500 flex flex-col justify-center">
+                <form onSubmit={handleSubmit} className="max-w-[400px] w-full mx-auto bg-gray-600 p-8 px-8 rounded-lg">
                     <h2 className="text-4xl dark:text-white font-bold text-center">SIGN UP</h2>
                     <div>
                         <label className="flex flx-col dark:text-white py-2">
@@ -95,14 +96,17 @@ function handleClick(){
                         </label>
                         <input  onChange={(e) => setPasswordConfirmation(e.target.value)} type="password" name="password" value={passwordConfirmation}/>
                     </div>
-                    <button>Sign Up</button>
+                    <br/>
+                    <button class="bg-cyan-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Sign Up</button>
                     <br/>
                     <br/>
-                    <p>Already have an account?</p>
-                    <button onClick={handleClick}>Login</button>
+                    <label className="flex flex-col dark:text-white py-2">Already have an account?</label>
+                    <button onClick={handleClick} class="bg-cyan-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Login</button>
                 </form>
             </div>
         </div>
+    </body>
     )
 
 }
+
