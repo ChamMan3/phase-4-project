@@ -18,50 +18,28 @@ import { Route, Routes } from "react-router-dom";
 export default function App() {
 const [currentUser, setCurrentUser] = useState(false)
 const [events, setEvents] = useState([])
+const [lists, setLists] = useState([])
 const [errors, setErrors] = useState(false)
 
 const [name, setName] = useState('')
 const [password, setPassword] = useState('')
 const [email, setEmail] = useState('')
-const [isLoading, setIsLoading] = useState(false);
 
 
 
-
-// checks session id at page load to determine if it should take to login or signup
 useEffect(() => {
   fetch("/authorized_user")
   .then((r) => {
     if (r.ok) {
       r.json()
-      .then((data) => 
-      setCurrentUser(data));
+      .then((data) => {
+      setCurrentUser(data)
+
+      });
     }
   });
 }, []);
 
-
-// useEffect(() => {
-//   fetch("/authorized_user")
-//   .then((res) => {
-//     if (res.ok) {
-//       res.json()
-//       .then((user) => {
-//         updateUser(user);
-
-
-const fetchEvents = () => {
-  fetch('/events')
-  .then(res => {
-    if(res.ok){
-      res.json().then(setEvents)
-    }else {
-      res.json().then(data => setErrors(data.error))
-    }
-  })
-}
-
-  // const updateUser = (currentUser) => setCurrentUser(currentUser)
 
 
 
@@ -69,13 +47,13 @@ const fetchEvents = () => {
 
   return (
     <div>
-      <NavBar/>
+      <NavBar setEvents={setEvents} currentUser={currentUser}/>
       {/* { !currentUser? <Login error={'please login'} updateUser={updateUser} /> : */}
     <>
       <Routes>
         <Route path="/calendar" element={<Calendar/>}/>
-        <Route path="/events" element={<Events/>}/>
-        <Route path="/" element={<Login updateUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
+        <Route path="/events" element={<Events setLists={setLists} setEvents={setEvents} lists={lists} events={events} currentUser={currentUser}/> }/>
+        <Route path="/" element={<Login setLists={setLists} updateUser={setCurrentUser} setEvents={setEvents} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
         <Route path="/settings" element={<Settings/>}/>
         <Route path="/signup" element={<Singup setCurrentUser={setCurrentUser} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>}/>
       </Routes>

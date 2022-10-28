@@ -1,7 +1,8 @@
 import React from "react";
 import EventCard from "./EventCard";
 
-function EventList({ events, onDeleteEvent, onUpdateEvent }) {
+function EventList({   currentUser, events, onDeleteEvent, onUpdateEvent, handleAddList }) {
+
   return (
     <ul className="cards">
       {events.map((event) => {
@@ -11,6 +12,9 @@ function EventList({ events, onDeleteEvent, onUpdateEvent }) {
             event={event}
             onDeleteEvent={onDeleteEvent}
             onUpdateEvent={onUpdateEvent}
+            currentUser={currentUser}
+            handleAddList={handleAddList}
+            
           />
         );
       })}

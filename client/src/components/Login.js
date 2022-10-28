@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-export default function Login( {updateUser} ){
+export default function Login( {updateUser, setEvents, setLists} ){
 
    const navigate = useNavigate()
   
@@ -23,16 +23,17 @@ export default function Login( {updateUser} ){
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body:JSON.stringify({
-            name,
-            email,
-            password,
+            name: name,
+            password: password,
           })
         }).then((r) => {
         setIsLoading(true);
         if (r.ok){
             r.json().then(data => {
-                // console.log(currentUser)
+                console.log(data)
                 updateUser(data)
+                setEvents(data.events)
+                setLists(data.lists)
                 navigate(`/calendar`)
             })
             }else {

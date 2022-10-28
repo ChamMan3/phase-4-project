@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from "react";
 import EventForm from "./EventForm";
 import EventList from "./EventList";
-
+import ListList from "./ListList"
 // Maybe have to fetch both events and lists here then combine them into one object
 // Need to fetch at app level so everything gets everything it needs
 
 
-function Events() {
-  const [events, setEvents] = useState([]);
-
-//   useEffect(() => {
-//     fetch("")
-//       .then((r) => r.json())
-//       .then((eventsArray) => {
-//         setEvents(eventsArray);
-//       });
-//   }, []);
+function Events({ lists, setEvents, currentUser, events, setLists}) {
 
   function handleAddEvent(newEvent) {
-    const updatedEventsArray = [...events, newEvent];
+    const updatedEventsArray = [...currentUser.events, newEvent];
     setEvents(updatedEventsArray);
   }
 
+  function handleAddList(newList) {
+    const updatedListsArray = [...currentUser.lists, newList];
+    setLists(updatedListsArray);
+  }
+
   function handleDeleteEvent(id) {
-    const updatedEventsArray = events.filter((event) => event.id !== id);
+    const updatedEventsArray = currentUser.events.filter((event) => event.id !== id);
     setEvents(updatedEventsArray);
   }
 
@@ -38,18 +34,20 @@ function Events() {
     setEvents(updatedEventsArray);
   }
 
-  const displayedEvents = events.filter((event) => {
-    return event.name.toLowerCase()
-  });
+
 
   return (
     <main>
-      <EventForm onAddEvent={handleAddEvent} />
+      <EventForm onAddEvent={handleAddEvent} currentUser={currentUser} />
       <EventList
-        events={displayedEvents}
+        events={events}
         onDeleteEvent={handleDeleteEvent}
         onUpdateEvent={handleUpdateEvent}
+        currentUser={currentUser}
+        handleAddList={handleAddList}
+        
       />
+    <ListList lists={lists}/>
     </main>
   );
 }

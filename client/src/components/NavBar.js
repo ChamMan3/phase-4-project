@@ -8,13 +8,13 @@ export default function NavBar(){
         <NavLink to="/">
             Login
         </NavLink>
-        <NavLink to="/Calendar">
+        <NavLink to="/calendar">
             Calendar
         </NavLink>
-        <NavLink to="/Events">
+        <NavLink to="/events">
             Events
         </NavLink>
-        <NavLink to ="/Settings">
+        <NavLink to ="/settings">
             Settings
         </NavLink>
     </>
