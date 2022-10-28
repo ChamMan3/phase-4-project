@@ -1,7 +1,7 @@
 // import Lists from "./Lists"
 import React, {useState} from "react"
 
-export default function EventForm({onAddEvent, handleAddList, currentUser}){
+export default function EventForm({onAddEvent, handleAddList, currentUser, onAddList}){
     // Need to fill out a form and submit the following:
     // eventtype, name, day, month, with details of the event being sent to lists backend with associated user and event
     const [name, setName] = useState("");
@@ -28,27 +28,31 @@ export default function EventForm({onAddEvent, handleAddList, currentUser}){
         .then((r) => r.json())
         .then((newEvent) => {
         console.log(newEvent)
-        onAddEvent(newEvent)});
+        onAddEvent(newEvent)
+        handle(newEvent.id)
+      });
 
-      //   fetch("http://localhost:3000/lists", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     user_id: currentUser.id,
-      //     event_id: event_id,
-      //     details: details,
+       function handle(data){
+
+        fetch("http://localhost:3000/lists", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: currentUser.id,
+          event_id: data,
+          details: details,
           
-      //   }),
-      // })
-      //   .then((r) => r.json())
-      //   .then((newList) => {
-      //   console.log(newList)
-      //   onAddList(newList)});
+        }),
+      })
+        .then((r) => r.json())
+        .then((newList) => {
+        console.log(newList)
+        onAddList(newList)});
 
 
-        
+        }    
     }
 
 

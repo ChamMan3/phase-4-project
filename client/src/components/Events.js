@@ -38,14 +38,14 @@ function Events({ lists, setEvents, currentUser, events, setLists}) {
 
   return (
     <main>
-      <EventForm onAddEvent={handleAddEvent} currentUser={currentUser} />
+      <EventForm onAddEvent={handleAddEvent} currentUser={currentUser} onAddList={handleAddList} />
       <EventList
         events={events}
         onDeleteEvent={handleDeleteEvent}
         onUpdateEvent={handleUpdateEvent}
         currentUser={currentUser}
         handleAddList={handleAddList}
-        
+        lists={lists}
       />
     <ListList lists={lists}/>
     </main>

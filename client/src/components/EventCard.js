@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 
-function EventCard({  currentUser, event, onDeleteEvent, onUpdateEvent, handleAddList }) {
+function EventCard({  lists , currentUser, event, onDeleteEvent, onUpdateEvent, handleAddList }) {
   const { id, eventType, name, start, end } = event;
   
-  const [details, setDetails] = useState(false)
-  const [updatedStart, setUpdatedStart] = useState("")
-  // const [updatedEnd, setUpdatedEnd] = useState("")
- 
- 
 
+  const [updatedStart, setUpdatedStart] = useState("")
+  const [updatedEnd, setUpdatedEnd] = useState("")
+ 
+ function showDetails(e) {
+  if(lists.event_id===id){
+  return lists.details
+ }
+ }
 
   function handleDeleteClick() {
     fetch(`/events/${id}`, {
@@ -27,35 +30,16 @@ function EventCard({  currentUser, event, onDeleteEvent, onUpdateEvent, handleAd
       },
       body: JSON.stringify({ 
         start : updatedStart,
-        
+        end : updatedEnd
        }),
     })
       .then((r) => r.json())
       .then((updatedEvent) => {
         onUpdateEvent(updatedEvent);
+        
       });
   }
-
-  function addDetails(e){
-    e.preventDefault()
-  fetch("http://localhost:3000/lists", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user_id: currentUser.id,
-      event_id: id,
-      details: details,
-      
-    }),
-  })
-    .then((r) => r.json())
-    .then((newList) => {
-    console.log(newList)
-    handleAddList(newList)});
-
-  }
+  
 
   return (
     <li className="card">
@@ -71,19 +55,17 @@ function EventCard({  currentUser, event, onDeleteEvent, onUpdateEvent, handleAd
           value={updatedStart}
           onChange={(e) => setUpdatedStart(e.target.value)}
         />
-        <button type="submit">Update Start</button>
+        <input
+          type="text"
+          placeholder="let em know whats down"
+          value={updatedEnd}
+          onChange={(e) => setUpdatedEnd(e.target.value)}
+        />
+        <button type="submit">Update Start and End</button>
 
       </form>
-      <form onSubmit={addDetails}>
-      <input
-          type="text"
-          placeholder= "fill here"
-          value={details}
-          onChange={(e) => setDetails(e.target.value)}
-        />
-        <button type="submit">Add Details</button>
-        {/* {!details ? <button type="submit">Add Details</button> : null} */}
-      </form>
+      <button onClick={showDetails}> Show Details </button>
+      
     </li>
   );
 }

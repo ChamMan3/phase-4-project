@@ -24,7 +24,7 @@ import interactionPlugin from "@fullcalendar/interaction"
 //       end: '2022-10-20' },
 //   ];
 
-export default function Calendar(){
+export default function Calendar({events}){
     const handleDateSelect = (selectInfo) => {
         let title = prompt("Go to events to make an event dummy")
         let calendarAPI = selectInfo.view.calendar
@@ -53,7 +53,7 @@ export default function Calendar(){
     return (
         <>
             <FullCalendar 
-            // events={events}
+            events={events}
             aspectRatio="2.5"
             initialView="dayGridMonth"
             headerToolbar={{
@@ -66,7 +66,7 @@ export default function Calendar(){
                 month: "Month",
                 week: "Week"
             }}
-            // editable={true}
+            editable={true}
             selectable={true}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             select={handleDateSelect}

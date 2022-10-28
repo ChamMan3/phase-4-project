@@ -26,7 +26,6 @@ const [password, setPassword] = useState('')
 const [email, setEmail] = useState('')
 
 
-
 useEffect(() => {
   fetch("/authorized_user")
   .then((r) => {
@@ -41,17 +40,13 @@ useEffect(() => {
 }, []);
 
 
-
-
-
-
   return (
     <div>
       <NavBar setEvents={setEvents} currentUser={currentUser}/>
       {/* { !currentUser? <Login error={'please login'} updateUser={updateUser} /> : */}
     <>
       <Routes>
-        <Route path="/calendar" element={<Calendar/>}/>
+        <Route path="/calendar" element={<Calendar events={events}/>}/>
         <Route path="/events" element={<Events setLists={setLists} setEvents={setEvents} lists={lists} events={events} currentUser={currentUser}/> }/>
         <Route path="/" element={<Login setLists={setLists} updateUser={setCurrentUser} setEvents={setEvents} name={name} setName={setName} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>} />
         <Route path="/settings" element={<Settings/>}/>
